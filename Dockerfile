@@ -114,4 +114,9 @@ WORKDIR /catkin_ws/
 
 RUN apt-get update
 
+# Setup systemctl
+COPY config/systemctl.py /usr/bin/systemctl
+RUN test -L /bin/systemctl || ln -sf /usr/bin/systemctl /bin/systemctl
+EXPOSE 20
+
 USER $USER
